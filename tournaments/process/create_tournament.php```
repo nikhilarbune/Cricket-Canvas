@@ -1,0 +1,54 @@
+<?php
+
+// Handle form submission from create.php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $tournamentName = $_POST["tournamentName"];
+    $startDate = $_POST["startDate"];
+    $endDate = $_POST["endDate"];
+    $registrationDeadline = $_POST["registrationDeadline"];
+    $city = $_POST["city"];
+    $entryFee = $_POST["entryFee"];
+    $prizePool = $_POST["prizePool"];
+    $teamLimit = $_POST["teamLimit"];
+    $status = $_POST["status"];
+
+    // Validate dates and team limits
+    if (!validateDates($startDate, $endDate, $registrationDeadline)) {
+        // Handle error
+    }
+
+    if (!validateTeamLimit($teamLimit)) {
+        // Handle error
+    }
+
+    // Store tournament data
+    $tournamentId = storeTournamentData($tournamentName, $startDate, $endDate, $registrationDeadline, $city, $entryFee, $prizePool, $teamLimit, $status);
+
+    // Handle draft/publish status
+    if ($status == "draft") {
+        // Save as draft
+    } else if ($status == "published") {
+        // Publish tournament
+    }
+}
+
+// Function to validate dates
+function validateDates($startDate, $endDate, $registrationDeadline) {
+    // Implement date validation logic
+}
+
+// Function to validate team limit
+function validateTeamLimit($teamLimit) {
+    // Implement team limit validation logic
+}
+
+// Function to store tournament data
+function storeTournamentData($tournamentName, $startDate, $endDate, $registrationDeadline, $city, $entryFee, $prizePool, $teamLimit, $status) {
+    // Implement data storage logic
+}
+
+// Redirect to tournament listing pages
+header("Location: list.php");
+exit();
+
+?>
